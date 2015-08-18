@@ -1,11 +1,7 @@
 import java.util.*;
 
 public class Arrays_and_Strings {
-
-	public static void main(String[] args) {
-		//Avoid error message in console
-	}
-
+	
 	public void HelloWorld() {
 		System.out.println("Hello World");
 	}
