@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class Arrays_and_Strings {
-	
+public class ArraysAndStrings {
+
 	public void HelloWorld() {
 		System.out.println("Hello World");
 	}

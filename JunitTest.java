@@ -5,11 +5,11 @@ public class JunitTest {
 
     String[] inputs = {null, "abc", "aaaa", "aaabbb", "ababab"};
     boolean[] results = {true, true, false, false, false};
-    static Arrays_and_Strings as;
+    static ArraysAndStrings as;
 
     @BeforeClass
     public static void oneTimeSetUp() {
-        as = new Arrays_and_Strings();
+        as = new ArraysAndStrings();
     }
 
     @Test
