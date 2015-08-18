@@ -19,23 +19,33 @@ public class ArraysAndStrings {
 		return true;
 	}
 
-	public boolean noDuplocateString2(String s) {
+	public boolean noDuplocateString2(String str) {
 		/*
 		Works if s only contains alphabetic characters ('a'~'z')
 		Use bit manipulation
 		*/
-
-		if(s == null) {
+		if(str == null) {
 			return true;
 		}
 		int checker = 0;
-		for(int i = 0; i < s.length(); i++) {
-			int dev = (s.charAt(i) - 'a');
+		for(int i = 0; i < str.length(); i++) {
+			int dev = (str.charAt(i) - 'a');
 			if((checker & (1 << dev)) > 0) {
 				return false;
 			}
 			checker |= (1 << dev);
 		}
 		return true;
+	}
+
+	public String reverseString(String str) {
+		if(str == null) {
+			return null;
+		}
+		StringBuilder res = new StringBuilder();
+		for(int i = str.length() - 1; i >= 0; i--) {
+			res.append(str.charAt(i));
+		}
+		return res.toString();
 	}
 }
