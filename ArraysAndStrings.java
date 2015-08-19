@@ -88,4 +88,25 @@ public class ArraysAndStrings {
         }
         return true;
 	}
+
+	public int[][] rotateMatrix(int[][] matrix) {
+		/*
+		Input: N * N matrix
+		Rotate the matrix clockwise by 90 degrees
+		*/
+		if(matrix == null) {
+			return null;
+		}
+		int n = matrix.length;
+		for(int i = 0; i < n / 2; i++) {
+			for(int j = i; j < n - 1 - i; j++) {
+				int top = matrix[i][j];
+				matrix[i][j] = matrix[n - j - 1][i];
+				matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];
+				matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];
+				matrix[j][n - i - 1] = top;
+			}
+		}
+		return matrix;
+	}
 }

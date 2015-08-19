@@ -1,7 +1,7 @@
 ## Algorithms-and-Data-Structures
 
 ### Introduction
-This repository stores and presents my study in Algorithms and Data Structures.
+This repository stores and presents my study in Algorithms and Data Structures. Each algorithm is verified by JunitTest with several test cases.
 
 ### Instruction
 Use ```sh execute.sh``` to compile and run Junit test.
