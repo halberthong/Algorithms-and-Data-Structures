@@ -70,4 +70,22 @@ public class ArraysAndStrings {
 		}
 		return new String(chs).substring(0, tail);
 	}
+
+	public boolean isAnagram(String s, String t) {
+        if(s == null || t == null) {
+            return false;
+        }
+        if(s.length() != t.length()) {
+            return false;
+        }
+        int[] counts = new int[256];
+        for(int i = 0; i < s.length(); i++) {
+            counts[s.charAt(i)]++;
+            counts[t.charAt(i)]--;
+        }
+        for(int j = 0; j < counts.length; j++) {
+            if(counts[j] != 0) return false;
+        }
+        return true;
+	}
 }
