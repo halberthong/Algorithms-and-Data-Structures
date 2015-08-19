@@ -22,7 +22,7 @@ public class JunitTest {
         }
     }
 
-    // @Ignore
+    @Ignore
     @Test
     public void test2() {
         String[] in = {null, new String(), "a", "aaa", "abc", "aab"};
@@ -31,4 +31,14 @@ public class JunitTest {
             assertEquals(out[i], as.reverseString(in[i]));
         }
     }
+
+    @Test
+    public void test3() {
+        String[] in = {null, new String(), "a", "aaa", "abc", "aaabbb", "ababab"};
+        String[] out = {null, new String(), "a", "a", "abc", "ab", "ab"};
+        for(int i = 0; i < in.length; i++) {
+            assertEquals(out[i], as.removeDuplicates(in[i]));
+        }
+    }
+
 }

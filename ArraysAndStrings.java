@@ -48,4 +48,26 @@ public class ArraysAndStrings {
 		}
 		return res.toString();
 	}
+
+	public String removeDuplicates(String str) {
+		//O(N) time O(1) space
+		if(str == null) {
+			return null;
+		}
+		char[] chs = str.toCharArray();
+		if(chs.length < 2) {
+			return str;
+		}
+		boolean[] dups = new boolean[256];
+		dups[chs[0]] = true;
+		int tail = 1;
+		for(int i = 1; i < chs.length; i++) {
+			if(!dups[chs[i]]) {
+				chs[tail] = chs[i];
+				tail++;
+				dups[chs[i]] = true;
+			}
+		}
+		return new String(chs).substring(0, tail);
+	}
 }
