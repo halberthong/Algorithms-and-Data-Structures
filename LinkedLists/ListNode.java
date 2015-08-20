@@ -27,21 +27,23 @@ public class ListNode {
     @Override
     public boolean equals(Object object) {
         if(object instanceof ListNode) {
+            if(this == object) {
+                return true;
+            }
             ListNode node = (ListNode) object;
             if(node.val == this.val) {
-                if(node.next != null && this.next != null) {
-                    return this.next.equals(node.next);
-                } else if(node.next == null && this.next == null) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return true;
             } else {
                 return false;
             }
         } else {
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return this.val;
     }
 
 }
