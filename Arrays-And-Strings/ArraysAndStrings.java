@@ -137,4 +137,32 @@ public class ArraysAndStrings {
 		}
 		return matrix;
 	}
+
+	public boolean isSubstring(String s1, String s2) {
+		/*
+		checks if s1 is a substring of s2
+		*/
+		if(s1 == null || s2 == null) {
+			return false;
+		}
+		if(s2.length() == 0) {
+			return true;
+		}
+		int i = 0;
+		int j = 0;
+		while(j < s2.length()) {
+			if(s1.charAt(i) == s2.charAt(j)) {
+				if(i == s1.length() - 1) {
+					return true;
+				} else {
+					i++;
+					j++;
+				}
+			} else {
+				j++;
+				i = 0;
+			}
+		}
+		return false;
+	}
 }

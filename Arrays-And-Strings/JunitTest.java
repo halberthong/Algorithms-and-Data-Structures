@@ -74,6 +74,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     @SuppressWarnings("deprecation")
     public void test6() {
@@ -82,6 +83,20 @@ public class JunitTest {
         for(int i = 0; i < matrices.length; i++) {
             try{
                 assertEquals("\n Test Failure of setZeros: \nInput: Matrix #" + i + "\n", results[i], as.setZeros(matrices[i]));
+            } catch(AssertionError e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Test
+    public void test7() {
+        String[] s = {null, new String(), "a", "a", "abc", "aab"};
+        String[] t = {null, new String(), "a", "abc", "bacabc", "ccaabbaa"};
+        boolean[] results = {false, true, true, true, true, true};
+        for(int i = 0; i < s.length; i++) {
+            try{
+                assertEquals("\n Test Failure of isSubstring: \nInput: " + s[i] + " , " + t[i] + "\n", results[i], as.isSubstring(s[i], t[i]));
             } catch(AssertionError e) {
                 System.out.println(e.getMessage());
             }
