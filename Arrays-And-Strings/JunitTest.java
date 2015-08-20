@@ -91,9 +91,9 @@ public class JunitTest {
 
     @Test
     public void test7() {
-        String[] s = {null, new String(), "a", "a", "abc", "aab"};
-        String[] t = {null, new String(), "a", "abc", "bacabc", "ccaabbaa"};
-        boolean[] results = {false, true, true, true, true, true};
+        String[] s = {null, new String(), "a", "a", "abc", "aab", "aab"};
+        String[] t = {null, new String(), "a", "abc", "abacab", "aaccaabbaa", "aaab"};
+        boolean[] results = {false, true, true, true, false, true, true};
         for(int i = 0; i < s.length; i++) {
             try{
                 assertEquals("\n Test Failure of isSubstring: \nInput: " + s[i] + " , " + t[i] + "\n", results[i], as.isSubstring(s[i], t[i]));

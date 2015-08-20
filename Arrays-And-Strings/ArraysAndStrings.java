@@ -148,21 +148,19 @@ public class ArraysAndStrings {
 		if(s2.length() == 0) {
 			return true;
 		}
-		int i = 0;
-		int j = 0;
-		while(j < s2.length()) {
-			if(s1.charAt(i) == s2.charAt(j)) {
-				if(i == s1.length() - 1) {
-					return true;
-				} else {
-					i++;
-					j++;
-				}
-			} else {
-				j++;
-				i = 0;
+		for(int j = 0; ; j++) {
+			for(int i = 0; ; i++) {
+				if(i == s1.length()) return true;
+				if(i + j == s2.length()) return false;
+				if(s1.charAt(i) != s2.charAt(i + j)) break;
 			}
 		}
-		return false;
 	}
+
+	// public boolean isRotation(String s, String t) {
+	// 	if(s == null || t == null || s.length() != t.length()) {
+	// 		return false;
+	// 	}
+	//
+	// }
 }
