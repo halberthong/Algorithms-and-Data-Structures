@@ -59,13 +59,29 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
+    @SuppressWarnings("deprecation")
     public void test5() {
         int[][][] matrices = {null, {{1}}, {{1, 2}, {3, 4}}, {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}}};
         int[][][] results = {null, {{1}}, {{3, 1}, {4, 2}}, {{13,9,5,1}, {14,10,6,2}, {15,11,7,3}, {16,12,8,4}}};
         for(int i = 0; i < matrices.length; i++) {
             try{
                 assertEquals("\n Test Failure of rotateMatrix: \nInput: Matrix #" + i + "\n", results[i], as.rotateMatrix(matrices[i]));
+            } catch(AssertionError e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    public void test6() {
+        int[][][] matrices = {null, {{1}}, {{0, 1}, {1, 1}}, {{0,1,1}, {1,0,1}, {1,1,1}}};
+        int[][][] results = {null, {{1}}, {{0, 0}, {0, 1}}, {{0,0,0}, {0,0,0}, {0,0,1}}};
+        for(int i = 0; i < matrices.length; i++) {
+            try{
+                assertEquals("\n Test Failure of setZeros: \nInput: Matrix #" + i + "\n", results[i], as.setZeros(matrices[i]));
             } catch(AssertionError e) {
                 System.out.println(e.getMessage());
             }
