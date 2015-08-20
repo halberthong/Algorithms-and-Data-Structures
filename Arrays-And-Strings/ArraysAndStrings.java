@@ -138,29 +138,31 @@ public class ArraysAndStrings {
 		return matrix;
 	}
 
-	public boolean isSubstring(String s1, String s2) {
+	public boolean isSubstring(String needle, String haystack) {
 		/*
-		checks if s1 is a substring of s2
+		checks if needle is a substring of haystack
+		O(N^2) time
 		*/
-		if(s1 == null || s2 == null) {
+		if(needle == null || haystack == null) {
 			return false;
 		}
-		if(s2.length() == 0) {
+		if(haystack.length() == 0) {
 			return true;
 		}
 		for(int j = 0; ; j++) {
 			for(int i = 0; ; i++) {
-				if(i == s1.length()) return true;
-				if(i + j == s2.length()) return false;
-				if(s1.charAt(i) != s2.charAt(i + j)) break;
+				if(i == needle.length()) return true;
+				if(i + j == haystack.length()) return false;
+				if(needle.charAt(i) != haystack.charAt(i + j)) break;
 			}
 		}
 	}
 
-	// public boolean isRotation(String s, String t) {
-	// 	if(s == null || t == null || s.length() != t.length()) {
-	// 		return false;
-	// 	}
-	//
-	// }
+	public boolean isRotation(String s, String t) {
+		if(s == null || t == null || s.length() != t.length()) {
+			return false;
+		}
+		String ss = s + s;
+		return isSubstring(t, ss);
+	}
 }

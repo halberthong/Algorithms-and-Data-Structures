@@ -89,6 +89,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test7() {
         String[] s = {null, new String(), "a", "a", "abc", "aab", "aab"};
@@ -97,6 +98,20 @@ public class JunitTest {
         for(int i = 0; i < s.length; i++) {
             try{
                 assertEquals("\n Test Failure of isSubstring: \nInput: " + s[i] + " , " + t[i] + "\n", results[i], as.isSubstring(s[i], t[i]));
+            } catch(AssertionError e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Test
+    public void test8() {
+        String[] s = {null, new String(), "a", "bca", "deabc", "decde"};
+        String[] t = {null, new String(), "a", "abc", "abcde", "abcde"};
+        boolean[] results = {false, true, true, true, true, false};
+        for(int i = 0; i < s.length; i++) {
+            try{
+                assertEquals("\n Test Failure of isRotation: \nInput: " + s[i] + " , " + t[i] + "\n", results[i], as.isRotation(s[i], t[i]));
             } catch(AssertionError e) {
                 System.out.println(e.getMessage());
             }
