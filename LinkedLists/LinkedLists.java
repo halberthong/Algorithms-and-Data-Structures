@@ -41,4 +41,24 @@ public class LinkedLists {
         }
         return head;
     }
+
+    public ListNode nthToLast(ListNode head, int n) {
+        /*
+        Returns null if head is null or n > length of list or n <= 0
+        */
+        if(head == null || n <= 0) {
+            return null;
+        }
+        ListNode p1 = head, p2 = head;
+        while(p2 != null && n > 0) {
+            p2 = p2.next;
+            n--;
+        }
+        if(n != 0) return null;
+        while(p2 != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1;
+    }
 }
