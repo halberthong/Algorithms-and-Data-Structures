@@ -61,4 +61,13 @@ public class LinkedLists {
         }
         return p1;
     }
+
+    public void deleteNodeInTheMiddle(ListNode node) {
+        /*
+        The node can't be the tail of the list
+        */
+        node.val = node.next.val;
+        node.next = node.next.next;
+        return;
+    }
 }

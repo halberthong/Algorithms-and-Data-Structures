@@ -14,7 +14,7 @@ public class JunitTest {
         ll = new LinkedLists();
     }
 
-    // @Ignore
+    @Ignore
     @Test
     public void test2() {
         ListNode n1 = new ListNode(1);
@@ -30,7 +30,7 @@ public class JunitTest {
         }
     }
 
-    // @Ignore
+    @Ignore
     @Test
     public void test3() {
         ListNode n1 = new ListNode(1);
@@ -57,6 +57,22 @@ public class JunitTest {
 
         try{
             assertEquals(ll.nthToLast(n1, 3).equals(n2), true);
+        } catch(AssertionError e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void test5() {
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(1);
+
+        n1.add(2); n1.add(3); n1.add(4);
+        n2.add(3); n2.add(4);
+
+        ll.deleteNodeInTheMiddle(n1.next);
+        try{
+            assertEquals(n1, n2);
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
