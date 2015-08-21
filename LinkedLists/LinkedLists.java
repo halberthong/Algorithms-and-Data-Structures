@@ -27,7 +27,7 @@ public class LinkedLists {
             return head;
         }
         ListNode cur = head;
-        while(cur != null && cur.next != null) {
+        while(cur != null) {
             ListNode pre = cur, tmp = cur.next;
             while(tmp != null) {
                 if(cur.val == tmp.val) {
@@ -69,5 +69,53 @@ public class LinkedLists {
         node.val = node.next.val;
         node.next = node.next.next;
         return;
+    }
+
+    public ListNode addLists(ListNode l1, ListNode l2) {
+        /*
+        Add to numbers represented in Integer lists
+        */
+        return addListsWithCarry(l1, l2, 0);
+    }
+
+    public ListNode addListsWithCarry(ListNode l1, ListNode l2, int carry) {
+        if(l1 == null && l2 == null && carry == 0) {
+            return null;
+        }
+        int val = carry;
+        if(l1 != null) {
+            val += l1.val;
+        }
+        if(l2 != null) {
+            val += l2.val;
+        }
+        ListNode res = new ListNode(val % 10);
+        res.next = addListsWithCarry(l1 == null ? null : l1.next, l2 == null ? null : l2.next, val / 10);
+        return res;
+    }
+
+    public ListNode reverseList_iterative(ListNode head) {
+        if(head == null) {
+            return null;
+        }
+        ListNode first = head;
+        while(first.next != null) {
+            ListNode temp = first.next;
+            first.next = temp.next;
+            temp.next = head;
+            head = temp;
+        }
+        return head;
+    }
+
+    public ListNode reverseList_recursive(ListNode head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+        ListNode nextNode = head.next;
+        ListNode newHead = reverseList_recursive(nextNode);
+        head.next = null;
+        nextNode.next = head;
+        return newHead;
     }
 }
