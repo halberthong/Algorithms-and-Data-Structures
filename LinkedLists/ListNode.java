@@ -10,7 +10,11 @@ public class ListNode {
     }
 
     public void add(int x) {
-        this.next = new ListNode(x);
+        ListNode cur = this;
+        while(cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = new ListNode(x);
     }
 
     @Override
