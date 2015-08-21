@@ -24,7 +24,7 @@ public class JunitTest {
         n2.add(2);
 
         try{
-            assertEquals(ll.deleteDups1(n1).toString(), n2.toString());
+            assertEquals(ll.deleteDups1(n1).listToString(), n2.listToString());
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
@@ -40,7 +40,7 @@ public class JunitTest {
         n2.add(2); n2.add(3);
 
         try{
-            assertEquals(ll.deleteDups2(n1).toString(), n2.toString());
+            assertEquals(ll.deleteDups2(n1).listToString(), n2.listToString());
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
@@ -93,7 +93,7 @@ public class JunitTest {
         res.add(8); res.add(1); res.add(1);
 
         try{
-            assertEquals(res.toString(), ll.addLists(n1, n2).toString());
+            assertEquals(res.listToString(), ll.addLists(n1, n2).listToString());
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
@@ -110,12 +110,13 @@ public class JunitTest {
         n2.add(3); n2.add(2); n2.add(1);
 
         try{
-            assertEquals(n1.toString(), ll.reverseList_iterative(n2).toString());
+            assertEquals(n1.listToString(), ll.reverseList_iterative(n2).listToString());
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
     }
 
+    @Ignore
     @Test
     public void test8() {
 
@@ -126,7 +127,22 @@ public class JunitTest {
         n2.add(3); n2.add(2); n2.add(1);
 
         try{
-            assertEquals(n1.toString(), ll.reverseList_recursive(n2).toString());
+            assertEquals(n1.listToString(), ll.reverseList_recursive(n2).listToString());
+        } catch(AssertionError e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void test9() {
+
+        ListNode n1 = new ListNode(1);
+
+        n1.add(2); n1.add(3); n1.add(4); n1.add(5); n1.add(6); n1.add(7);
+        n1.add(n1.next.next);
+
+        try{
+            assertEquals(ll.findBeginning(n1), new ListNode(3));
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }

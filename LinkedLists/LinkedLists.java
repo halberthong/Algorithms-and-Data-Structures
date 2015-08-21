@@ -118,4 +118,30 @@ public class LinkedLists {
         nextNode.next = head;
         return newHead;
     }
+
+    public ListNode findBeginning(ListNode head) {
+        /*
+        Imput: a circled list
+        Objective: find the begining of the loop
+        Method: TWO POINTERS
+        */
+        ListNode fast = head, slow = head;
+        while(fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) {
+                break;
+            }
+        }
+        //check if it's a circled list
+        if(fast.next == null) {
+            return null;
+        }
+        slow = head;
+        while(slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
+    }
 }
