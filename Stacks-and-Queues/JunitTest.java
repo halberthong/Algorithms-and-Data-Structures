@@ -24,6 +24,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test2() {
         StackWithMin swm = new StackWithMin();
@@ -34,6 +35,29 @@ public class JunitTest {
             assertEquals(0, swm.min());
             swm.pop();
             assertEquals(1, swm.min());
+        } catch(AssertionError e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void test3() {
+        int n = 5;
+        Tower[] towers = new Tower[3];
+        for(int i = 0; i < 3; i++) {
+            towers[i] = new Tower(i);
+        }
+        for(int i = n - 1; i >= 0; i--) {
+            towers[0].add(i);
+        }
+        towers[0].moveDisks(n, towers[2], towers[1]);
+
+        Tower res = new Tower(2);
+        for(int i = n - 1; i >= 0; i--) {
+            res.add(i);
+        }
+        try{
+            assertEquals(res, towers[2]);
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
