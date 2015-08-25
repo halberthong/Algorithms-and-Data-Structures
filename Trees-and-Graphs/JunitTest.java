@@ -19,6 +19,7 @@ public class JunitTest {
         TreeNode t2 = new TreeNode(1);
         t2.left = new TreeNode(2);
         t2.right = new TreeNode(3);
+        t1.display();
         try{
             assertEquals(t1, t2);
         } catch(AssertionError e) {

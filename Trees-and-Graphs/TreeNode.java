@@ -5,6 +5,7 @@ public class TreeNode {
     public TreeNode(int x) {
         this.val = x;
     }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof TreeNode) {
@@ -24,5 +25,20 @@ public class TreeNode {
             }
         }
         return false;
+    }
+
+    public void display() {
+        if(this != null) {
+            System.out.print(val);
+            if(left != null) {
+                System.out.print("(");
+                left.display();
+            }
+            if(right != null) {
+                System.out.print(",");
+                right.display();
+                System.out.print(")");
+            }
+        }
     }
 }
