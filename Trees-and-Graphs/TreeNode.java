@@ -27,18 +27,24 @@ public class TreeNode {
         return false;
     }
 
-    public void display() {
-        if(this != null) {
-            System.out.print(val);
-            if(left != null) {
-                System.out.print("(");
-                left.display();
+    public void add(int x) {
+        if(x == val) {
+            TreeNode t = new TreeNode(x);
+            t.left = left;
+            left = t;
+        } else if(x > val) {
+            if(right == null) {
+                right = new TreeNode(x);
+            } else {
+                right.add(x);
             }
-            if(right != null) {
-                System.out.print(",");
-                right.display();
-                System.out.print(")");
+        } else {
+            if(left == null) {
+                left = new TreeNode(x);
+            } else {
+                left.add(x);
             }
         }
+
     }
 }

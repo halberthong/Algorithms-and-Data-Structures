@@ -7,10 +7,14 @@ public class JunitTest {
     /*
     Add @Ignore before @Test if you don't run the test case
     */
+    public static TreesAndGraphs tg;
+
     @BeforeClass
     public static void oneTimeSetUp() {
+        tg = new TreesAndGraphs();
     }
 
+    @Ignore
     @Test
     public void test1() {
         TreeNode t1 = new TreeNode(1);
@@ -25,5 +29,13 @@ public class JunitTest {
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void test2() {
+        TreeNode t1 = new TreeNode(3);
+        t1.add(1); t1.add(2); t1.add(4); t1.add(5);
+        t1.display();
+        tg.preOrderTraversal(t1, 1);
     }
 }
