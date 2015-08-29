@@ -14,6 +14,7 @@ public class JunitTest {
     }
 
     @Test
+    @Ignore
     public void test1() {
         mp.printPrimeNumbers(1000);
     }
