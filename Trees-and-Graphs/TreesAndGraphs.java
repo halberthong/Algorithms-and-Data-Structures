@@ -1,10 +1,9 @@
 import java.util.*;
 
 public class TreesAndGraphs {
+    /* Pre Order Traversal */
     public List<Integer> preOrderTraversal(TreeNode root, int method) {
-        /*
-        method: 1 for recursive, 2 for iterarive
-        */
+        /* method: 1 for recursive, 2 for iterarive */
         List<Integer> res = new LinkedList<Integer>();
         if (method == 1) {
             preOrderHelper(root, res);
@@ -31,12 +30,92 @@ public class TreesAndGraphs {
         }
     }
 
-    public void preOrderHelper(TreeNode root, List<Integer> res) {
+    private void preOrderHelper(TreeNode root, List<Integer> res) {
         if (root == null) {
             return;
         }
         res.add(root.val);
         preOrderHelper(root.left, res);
         preOrderHelper(root.right, res);
+    }
+
+    /* In Order Traversal */
+    public List<Integer> inOrderTraversal(TreeNode root, int method) {
+        /* method: 1 for recursive, 2 for iterarive */
+        List<Integer> res = new LinkedList<Integer>();
+        if (method == 1) {
+            inOrderHelper(root, res);
+            return res;
+        } else if (method == 2) {
+            if (root == null) {
+                return res;
+            }
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            while (root != null || !stack.isEmpty()) {
+                while (root != null) {
+                    stack.push(root);
+                    root = root.left;
+                }
+                root = stack.pop();
+                res.add(root.val);
+                root = root.right;
+            }
+            return res;
+        } else {
+            return res;
+        }
+    }
+
+    private void inOrderHelper(TreeNode root, List<Integer> res) {
+        if (root == null) {
+            return;
+        }
+        inOrderHelper(root.left, res);
+        res.add(root.val);
+        inOrderHelper(root.right, res);
+        return;
+    }
+
+    /*
+    Implement a function to check if a tree is balanced.
+    Meaning no two leaf nodes differ in distance from the root by more than one.
+    */
+    public boolean isBalancedTree(TreeNode root) {
+        return maxDepth(root) - minDepth(root) <= 1;
+    }
+
+    private int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+    }
+
+    private int minDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+    }
+
+    /*
+    Create a balanced BST by a sorted array
+    */
+    public TreeNode arrayToBST(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+        return arrayToBSTHelper(arr, 0, arr.length - 1);
+    }
+
+    private TreeNode arrayToBSTHelper(int[] arr, int start, int end) {
+        if (end < start) {
+            return null;
+        }
+        int mid = start + (end - start) / 2;
+        TreeNode root = new TreeNode(arr[mid]);
+        root.left = arrayToBSTHelper(arr, start, mid - 1);
+        root.right = arrayToBSTHelper(arr, mid + 1, end);
+        return root;
     }
 }
