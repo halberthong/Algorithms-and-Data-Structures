@@ -104,6 +104,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test8() {
         String[] s = {null, new String(), "a", "bca", "deabc", "decde"};
@@ -116,6 +117,16 @@ public class JunitTest {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    @Test
+    public void test9() {
+        int[][] arr1 = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}};
+        as.printReverseDiagonal(arr1);
+        int[][] arr2 = {{1,2,3}, {4,5,6}, {7,8,9}};
+        as.printReverseDiagonal(arr2);
+        int[][] arr3 = {{1,2}, {3,4}, {5,6}};
+        as.printReverseDiagonal(arr3);
     }
 
 }

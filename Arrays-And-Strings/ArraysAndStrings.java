@@ -165,4 +165,44 @@ public class ArraysAndStrings {
 		String ss = s + s;
 		return isSubstring(t, ss);
 	}
+
+	public void printReverseDiagonal(int[][] arr) {
+		/*
+		1 2 3
+		4 5 6 ---> 1 -- 2 4 -- 3 5 7 -- 6 8 -- 9
+		7 8 9
+
+		1 2 3
+		4 5 6 ---> 1 -- 2 4 -- 3 5 -- 6
+
+		1 2
+		3 4   ---> 1 -- 2 3 -- 4 5 -- 6
+		5 6
+		*/
+		if (arr == null || arr.length == 0 || arr[0].length == 0) {
+			return;
+		}
+		System.out.println();
+		int i = 0;
+		int j = 0;
+		int row = arr.length;
+		int col = arr[0].length;
+		int count = 0;
+		while (i + j < row + col - 1) {
+			while (i >= 0 && j >= 0 && i < row && j < col) {
+				System.out.print(arr[i][j] + " ");
+				j--;
+				i = count - j;
+			}
+			System.out.print("\n");
+			count++;
+			if (count < col) {
+				j = count;
+				i = count - j;
+			} else {
+				j = col - 1;
+				i = count - j;
+			}
+		}
+	}
 }
