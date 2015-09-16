@@ -3,8 +3,11 @@
 *.class
 
 
-# OS X Files #
+# OS X Files
 .DS_Store
 ._*
 .Spotlight*
 .Trashes
+
+# Temporary non-sync files
+SetOfStacks.java
