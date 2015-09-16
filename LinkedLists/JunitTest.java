@@ -14,6 +14,18 @@ public class JunitTest {
         ll = new LinkedLists();
     }
 
+    public void testify(Object o1, Object o2) {
+        if (o1.getClass().equals(o2.getClass())) {
+            try{
+                assertEquals(o1, o2);
+            } catch(AssertionError e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("Not comparable");
+        }
+    }
+
     @Ignore
     @Test
     public void test2() {
@@ -133,6 +145,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test9() {
 
@@ -146,5 +159,19 @@ public class JunitTest {
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void test10() {
+        ListNode l1 = new ListNode(0);
+        l1.add(5);
+        ListNode l2 = new ListNode(2);
+        ListNode l3 = new ListNode(3);
+        ListNode res = new ListNode(0);
+        res.add(2); res.add(3); res.add(5);
+        List<ListNode> lists = new ArrayList<ListNode>();
+        lists.add(l1); lists.add(l2); lists.add(l3);
+        ListNode test = ll.mergeKLists(lists, 1);
+        testify(res, test);
     }
 }

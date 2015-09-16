@@ -27,8 +27,14 @@ public class ListNode {
 
     @Override
     public String toString() {
-        String res = "" + this.val;
-        return res;
+        ListNode cur = this;
+        StringBuilder res = new StringBuilder();
+        while (cur != null) {
+            res.append(cur.val);
+            res.append(" ");
+            cur = cur.next;
+        }
+        return res.toString();
     }
 
     public String listToString() {
@@ -59,15 +65,17 @@ public class ListNode {
     @Override
     public boolean equals(Object object) {
         if(object instanceof ListNode) {
-            if(this == object) {
-                return true;
-            }
-            ListNode node = (ListNode) object;
-            if(node.val == this.val) {
-                return true;
-            } else {
-                return false;
-            }
+            ListNode li = (ListNode) object;
+            return equalsHelper(this, li);
+        }
+        return false;
+    }
+
+    private boolean equalsHelper(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null) {
+            return true;
+        } else if (l1 != null && l2 != null && l1.val == l2.val) {
+            return equalsHelper(l1.next, l2.next);
         } else {
             return false;
         }

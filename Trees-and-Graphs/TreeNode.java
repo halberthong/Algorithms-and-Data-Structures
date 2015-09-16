@@ -13,27 +13,6 @@ public class TreeNode {
         if(obj instanceof TreeNode) {
             TreeNode t = (TreeNode) obj;
             return equalsHelper(this, t);
-            // if (t == null && this == null) {
-            //     return true;
-            // }
-            // if (t != null && this != null && t.val == this.val) {
-            //     boolean l, r;
-            //     if (t.left == null && this.left == null) {
-            //         l = true;
-            //     } else if (t.left != null && this.left != null) {
-            //         l = this.left.equals(t.left);
-            //     } else {
-            //         return false;
-            //     }
-            //     if (t.right == null && this.right == null) {
-            //         r = true;
-            //     } else if (t.right != null && this.right != null) {
-            //         r = this.right.equals(t.right);
-            //     } else {
-            //         return false;
-            //     }
-            //     return l && r;
-            // }
         }
         return false;
     }

@@ -144,4 +144,54 @@ public class LinkedLists {
         }
         return fast;
     }
+
+    public ListNode mergeKLists(List<ListNode> lists, int flag) {
+        /*
+        Given lists: 0 -> 5 -> null,
+                     1 -> null,
+                     null
+        return list: 0 -> 1 -> 5 -> null
+        */
+
+        /*
+        Merge k lists by merging two lists with divide and conquer
+        */
+        if (flag == 1) {
+            if (lists == null || lists.size() == 0) {
+                return null;
+            }
+            return mergeHelper(lists, 0, lists.size() - 1);
+        } else {
+            return null;
+        }
+    }
+    private ListNode mergeHelper(List<ListNode> lists, int start, int end) {
+        if (start == end) {
+            return lists.get(start);
+        }
+        int mid = start + (end - start) / 2;
+        ListNode left = mergeHelper(lists, start, mid);
+        ListNode right = mergeHelper(lists, mid + 1, end);
+        return mergeTwoLists(left, right);
+    }
+    private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        ListNode pre = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                pre.next = l1;
+                l1 = l1.next;
+            } else {
+                pre.next = l2;
+                l2 = l2.next;
+            }
+            pre = pre.next;
+        }
+        if (l1 != null) {
+            pre.next = l1;
+        } else {
+            pre.next = l2;
+        }
+        return dummy.next;
+    }
 }
