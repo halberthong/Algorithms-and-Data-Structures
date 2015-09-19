@@ -161,6 +161,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test10() {
         ListNode l1 = new ListNode(0);
@@ -173,5 +174,21 @@ public class JunitTest {
         lists.add(l1); lists.add(l2); lists.add(l3);
         ListNode test = ll.mergeKLists(lists, 1);
         testify(res, test);
+    }
+
+    @Test
+    public void test11() {
+        ListNode l1 = new ListNode(0);
+        l1.add(5);
+        l1.add(7);
+        l1.add(3);
+        l1.add(6);
+        ListNode l2 = ll.insertionSortList(l1);
+        ListNode res = new ListNode(0);
+        res.add(3);
+        res.add(5);
+        res.add(6);
+        res.add(7);
+        testify(res, l2);
     }
 }
