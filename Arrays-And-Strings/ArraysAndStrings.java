@@ -205,4 +205,40 @@ public class ArraysAndStrings {
 			}
 		}
 	}
+
+	public int atoi(String str) {
+        if (str == null || str.length() == 0) {
+            return 0;
+        }
+        int flag = 1;
+        int i = 0;
+        while (str.charAt(i) == ' ') i++;
+        if (str.charAt(i) == '+') {
+            i++;
+        } else if (str.charAt(i) == '-') {
+            flag = -1;
+            i++;
+        }
+        long num = 0;
+        while (i < str.length()) {
+            char tmp = str.charAt(i);
+            if (tmp > '9' || tmp < '0') {
+				if (tmp == ' ') {
+					break;
+				}
+                else {
+					throw new IllegalArgumentException("Illegal Input!");
+				}
+            }
+            num = num * 10 + (tmp - '0');
+            if (flag * num > Integer.MAX_VALUE) {
+                return Integer.MAX_VALUE;
+            }
+            if (flag * num < Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
+            }
+            i++;
+        }
+		return (int)num * flag;
+	}
 }

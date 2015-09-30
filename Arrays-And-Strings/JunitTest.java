@@ -119,6 +119,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test9() {
         int[][] arr1 = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}};
@@ -127,6 +128,11 @@ public class JunitTest {
         as.printReverseDiagonal(arr2);
         int[][] arr3 = {{1,2}, {3,4}, {5,6}};
         as.printReverseDiagonal(arr3);
+    }
+
+    @Test
+    public void test10() {
+        System.out.println(as.atoi("-123 12"));
     }
 
 }
