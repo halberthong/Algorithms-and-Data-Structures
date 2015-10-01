@@ -118,4 +118,39 @@ public class TreesAndGraphs {
         root.right = arrayToBSTHelper(arr, mid + 1, end);
         return root;
     }
+
+    public char[][] getShortestPath(char[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return matrix;
+        }
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] visited = new int[m][n];
+        int flag = 1;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 'G') {
+                    getShortestPathBFS(matrix, flag, visited, i + 1, j, 1);
+                    getShortestPathBFS(matrix, flag, visited, i, j + 1, 1);
+                    getShortestPathBFS(matrix, flag, visited, i - 1, j, 1);
+                    getShortestPathBFS(matrix, flag, visited, i, j - 1, 1);
+                    flag++;
+                }
+            }
+        }
+        return matrix;
+    }
+    private void getShortestPathBFS(char[][] matrix, int flag, int[][] visited, int i, int j, int level) {
+        if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length) return;
+        if (matrix[i][j] != 'G' && matrix[i][j] != 'B' && visited[i][j] != flag) {
+            visited[i][j] = flag;
+            if (matrix[i][j] == '0' || (matrix[i][j] > level + '0')) {
+                matrix[i][j] = (char)(level + '0');
+            }
+            getShortestPathBFS(matrix, flag, visited, i + 1, j, level + 1);
+            getShortestPathBFS(matrix, flag, visited, i, j + 1, level + 1);
+            getShortestPathBFS(matrix, flag, visited, i - 1, j, level + 1);
+            getShortestPathBFS(matrix, flag, visited, i, j - 1, level + 1);
+        }
+    }
 }

@@ -72,4 +72,22 @@ public class JunitTest {
         System.out.println(t2);
         testify(t1, t2);
     }
+
+    @Test
+    public void test6() {
+        char[][] m1 = {{'0', '0', '0', '0'}, {'G', 'B', 'G', 'G'}, {'0', '0', '0', 'G'}};
+        printMatrix(m1);
+        printMatrix(tg.getShortestPath(m1));
+    }
+    private void printMatrix(char[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return;
+        }
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.println();
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+        }
+    }
 }
