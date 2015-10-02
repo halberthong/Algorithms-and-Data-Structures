@@ -209,4 +209,29 @@ public class LinkedLists {
         }
         return dummy.next;
     }
+
+    public void printInterval(ListNode head) {
+        if (head == null) return;
+        int start = head.val, end = head.val;
+        while (head.next != null) {
+            head = head.next;
+            if (head.val == end + 1) {
+                end++;
+            } else {
+                if (start == end) {
+                    System.out.print(start);
+                } else {
+                    System.out.print(start + "-" + end);
+                }
+                System.out.print(", ");
+                start = head.val;
+                end = start;
+            }
+        }
+        if (start == end) {
+            System.out.print(start);
+        } else {
+            System.out.print(start + "-" + end);
+        }
+    }
 }

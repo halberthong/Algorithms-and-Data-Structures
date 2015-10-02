@@ -12,6 +12,17 @@ public class JunitTest {
     public static void oneTimeSetUp() {
         as = new ArraysAndStrings();
     }
+    public void testify(Object o1, Object o2) {
+        if (o1.getClass().equals(o2.getClass())) {
+            try{
+                assertEquals(o1, o2);
+            } catch(AssertionError e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("Not comparable");
+        }
+    }
 
     @Ignore
     @Test
@@ -130,9 +141,21 @@ public class JunitTest {
         as.printReverseDiagonal(arr3);
     }
 
+    @Ignore
     @Test
     public void test10() {
-        System.out.println(as.atoi("-123 12"));
+        System.out.println(as.atoi("-123 3"));
     }
 
+    @Test
+    public void test11() {
+        int[] a1 = {8,0,1};
+        int[] a2 = {3,9,9};
+        printArray(as.addTwoNumbers(a1, a2));
+    }
+    private void printArray(int[] arr) {
+        for(int tmp : arr) {
+            System.out.print(tmp + " ");
+        }
+    }
 }

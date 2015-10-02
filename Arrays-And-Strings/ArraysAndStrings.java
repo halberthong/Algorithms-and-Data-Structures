@@ -241,4 +241,43 @@ public class ArraysAndStrings {
         }
 		return (int)num * flag;
 	}
+
+	public int[] addTwoNumbers(int[] a1, int[] a2) {
+		if (a1 == null || a2 == null) {
+			return null;
+		}
+		int carry = 0;
+		int i1 = a1.length - 1;
+		int i2 = a2.length - 1;
+		int[] res = new int[i1 > i2 ? i1 + 1 : i2 + 1];
+		int j = res.length - 1;
+		while (i1 >= 0 && i2 >= 0) {
+			res[j] = (a1[i1] + a2[i2] + carry) % 10;
+			carry = (a1[i1] + a2[i2] + carry) / 10;
+			i1--;
+			i2--;
+			j--;
+		}
+		while (i1 >= 0) {
+			res[j] = (a1[i1] + carry) % 10;
+			carry = (a1[i1] + carry) / 10;
+			i1--;
+			j--;
+		}
+		while (i2 >= 0) {
+			res[j] = (a2[i2] + carry) % 10;
+			carry = (a2[i2] + carry) / 10;
+			i2--;
+			j--;
+		}
+		if (carry > 0) {
+			int[] resNew = new int[res.length + 1];
+			resNew[0] = carry;
+			for (int i = 1; i < resNew.length; i++) {
+				resNew[i] = res[i - 1];
+			}
+			return resNew;
+		}
+		return res;
+	}
 }
