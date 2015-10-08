@@ -25,6 +25,9 @@ public class JunitTest {
             System.out.println("Not comparable");
         }
     }
+    public void print(Object obj) {
+        System.out.println(obj.toString());
+    }
 
     @Ignore
     @Test
@@ -73,6 +76,7 @@ public class JunitTest {
         testify(t1, t2);
     }
 
+    @Ignore
     @Test
     public void test6() {
         char[][] m1 = {{'0', '0', '0', '0'}, {'G', 'B', 'G', 'G'}, {'0', '0', '0', 'G'}};
@@ -89,5 +93,17 @@ public class JunitTest {
                 System.out.print(matrix[i][j] + " ");
             }
         }
+    }
+
+    @Test
+    public void test7() {
+        TreeNode root = new TreeNode(50);
+        root.left = new TreeNode(40);
+        root.right = new TreeNode(30);
+        root.left.left = new TreeNode(10);
+        root.left.right = new TreeNode(10);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(15);
+        print(tg.isBanlancedWeightedTree(root));
     }
 }

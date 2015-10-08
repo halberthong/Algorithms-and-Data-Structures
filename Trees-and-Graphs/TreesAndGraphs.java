@@ -153,4 +153,17 @@ public class TreesAndGraphs {
             getShortestPathBFS(matrix, flag, visited, i, j - 1, level + 1);
         }
     }
+
+    public boolean isBanlancedWeightedTree(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return (weightHelper(root.left) == weightHelper(root.right)) && isBanlancedWeightedTree(root.left) && isBanlancedWeightedTree(root.right);
+    }
+    public int weightHelper(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.val + weightHelper(node.left) + weightHelper(node.right);
+    }
 }
