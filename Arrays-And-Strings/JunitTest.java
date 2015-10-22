@@ -147,6 +147,7 @@ public class JunitTest {
         System.out.println(as.atoi("-123 3"));
     }
 
+    @Ignore
     @Test
     public void test11() {
         int[] a1 = {8,0,1};
@@ -157,5 +158,12 @@ public class JunitTest {
         for(int tmp : arr) {
             System.out.print(tmp + " ");
         }
+    }
+
+    @Test
+    public void test12() {
+        int[] t = {1,3,2,4};
+        as.nextPermutation(t);
+        printArray(t);
     }
 }
