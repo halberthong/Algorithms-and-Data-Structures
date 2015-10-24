@@ -5,7 +5,6 @@ public class Test {
         sr.add("pepsi", 1000);
         sr.add("sprite", 1200);
         sr.add("bread", 2000);
-        sr.add("pepsi", 100);
         sr.printList();
     }
 

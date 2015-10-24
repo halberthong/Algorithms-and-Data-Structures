@@ -25,7 +25,7 @@ public class StreamingRank {
     }
     public void addToList(Node node) {
         Node scan = head;
-        while (scan.next.val > node.val) {
+        while (scan.next.val >= node.val) {
             scan = scan.next;
         }
         node.next = scan.next;
