@@ -12,6 +12,19 @@ public class JunitTest {
         rec = new Recursion();
     }
 
+    public void testify(Object o1, Object o2) {
+        if (o1.getClass().equals(o2.getClass())) {
+            try{
+                assertEquals(o1, o2);
+            } catch(AssertionError e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("Not comparable");
+        }
+    }
+
+    @Ignore
     @Test
     public void test1() {
         int[] nums = {1,2,2};
@@ -28,5 +41,16 @@ public class JunitTest {
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void test2() {
+        int[] A = {1, 4, 2, 3};
+        int res = rec.minAdjustmentCost(A, 1);
+        testify(2, res);
+        res = rec.minAdjustmentCost(A, 2);
+        testify(1, res);
+        res = rec.minAdjustmentCost(A, 0);
+        testify(4, res);
     }
 }
