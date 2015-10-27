@@ -160,10 +160,32 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test12() {
         int[] t = {1,3,2,4};
         as.nextPermutation(t);
         printArray(t);
+    }
+
+    @Ignore
+    @Test
+    public void test13() {
+        int[] t1 = {1, 7, 6, 4, 3, 2, 5};
+        int[] res1 = as.getContinuousSum(t1, 13);
+        printArray(res1);
+        int[] t2 = {1, 5, 6, 4, 3, 2, 5};
+        int[] res2 = as.getContinuousSum(t2, 13);
+        printArray(res2);
+    }
+
+    @Test
+    public void test14() {
+        int[] t1 = {1, 4, 3, 5, 7, -1, 2};
+        int res1 = as.getDivider(t1);
+        System.out.println(res1);
+        int[] t2 = {1, 5, 6, 4, 3, 2, 14};
+        int res2 = as.getDivider(t2);
+        System.out.println(res2);
     }
 }

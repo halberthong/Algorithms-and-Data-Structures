@@ -312,4 +312,36 @@ public class ArraysAndStrings {
 			j--;
 		}
 	}
+
+	public int[] getContinuousSum(int[] arr, int t) {
+		int i = 0;
+		int tmp = 0;
+		for (int j = 0; j < arr.length; j++) {
+			tmp += arr[j];
+			if (tmp > t) {
+				while (tmp > t) {
+					tmp -= arr[i];
+					i++;
+				}
+			}
+			if (tmp == t) return new int[]{i + 1, j + 1};
+		}
+		return new int[2];
+	}
+
+	public int getDivider(int[] arr) {
+		int sum = 0;
+		for (int tmp : arr) {
+			sum += tmp;
+		}
+		int preSum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (preSum == sum - preSum - arr[i]) {
+				return i + 1;
+			} else {
+				preSum += arr[i];
+			}
+		}
+		return -1;
+	}
 }

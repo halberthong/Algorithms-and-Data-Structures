@@ -7,7 +7,6 @@
     - floor button and level button
     - illuminated when pressed
     - place an elevator request when pressed
- 3. Elevator
+3. Elevator
     - moves up/down
     - open/close the door
-    
