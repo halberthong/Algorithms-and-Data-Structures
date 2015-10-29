@@ -169,4 +169,43 @@ public class TreesAndGraphs {
             return Math.max(left, right) + 1;
         }
     }
+
+    public int longestContinuousSequence(int[][] matrix) {
+        /*
+            1 4 5
+            2 7 6 --> 4~9 --> 6
+            3 8 9
+         */
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] count = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                count[i][j] = Math.max(count[i][j], 1);
+                csHelper(matrix, count, i - 1, j, m, n, matrix[i][j], 1);
+                csHelper(matrix, count, i, j - 1, m, n, matrix[i][j], 1);
+                csHelper(matrix, count, i + 1, j, m, n, matrix[i][j], 1);
+                csHelper(matrix, count, i, j + 1, m, n, matrix[i][j], 1);
+            }
+        }
+        int res = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                res = Math.max(res, count[i][j]);
+            }
+        }
+        return res;
+    }
+    private void csHelper(int[][] matrix, int[][] count, int i, int j, int m, int n, int pre, int steps) {
+        if (i < 0 || j < 0 || i >= m || j >= n) return;
+        if (pre + 1 == matrix[i][j]) {
+            steps++;
+            count[i][j] = Math.max(steps, count[i][j]);
+            csHelper(matrix, count, i - 1, j, m, n, matrix[i][j], steps);
+            csHelper(matrix, count, i, j - 1, m, n, matrix[i][j], steps);
+            csHelper(matrix, count, i + 1, j, m, n, matrix[i][j], steps);
+            csHelper(matrix, count, i, j + 1, m, n, matrix[i][j], steps);
+        }
+    }
 }

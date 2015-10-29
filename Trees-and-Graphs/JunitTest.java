@@ -95,6 +95,7 @@ public class JunitTest {
         }
     }
 
+    @Ignore
     @Test
     public void test7() {
         TreeNode root = new TreeNode(50);
@@ -109,6 +110,11 @@ public class JunitTest {
 
     @Test
     public void test8() {
-        int[][] matrix = {{1, 4, 5}, {2, 7, 6}, {3, 8, 9}};
+        int[][] matrix1 = {{1, 4, 5}, {2, 7, 6}, {3, 8, 9}};
+        testify(6, tg.longestContinuousSequence(matrix1));
+        int[][] matrix2 = {{1,4,5,6}, {2,9,8,7}, {3,10,7,8}, {4,5,6,9}};
+        testify(9, tg.longestContinuousSequence(matrix2));
+        int[][] matrix3 = {{1,1,1}, {1,1,1}};
+        testify(1, tg.longestContinuousSequence(matrix3));
     }
 }
