@@ -130,40 +130,43 @@ public class TreesAndGraphs {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == 'G') {
-                    getShortestPathBFS(matrix, flag, visited, i + 1, j, 1);
-                    getShortestPathBFS(matrix, flag, visited, i, j + 1, 1);
-                    getShortestPathBFS(matrix, flag, visited, i - 1, j, 1);
-                    getShortestPathBFS(matrix, flag, visited, i, j - 1, 1);
+                    getShortestPathDFS(matrix, flag, visited, i + 1, j, 1);
+                    getShortestPathDFS(matrix, flag, visited, i, j + 1, 1);
+                    getShortestPathDFS(matrix, flag, visited, i - 1, j, 1);
+                    getShortestPathDFS(matrix, flag, visited, i, j - 1, 1);
                     flag++;
                 }
             }
         }
         return matrix;
     }
-    private void getShortestPathBFS(char[][] matrix, int flag, int[][] visited, int i, int j, int level) {
+    private void getShortestPathDFS(char[][] matrix, int flag, int[][] visited, int i, int j, int level) {
         if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length) return;
         if (matrix[i][j] != 'G' && matrix[i][j] != 'B' && visited[i][j] != flag) {
             visited[i][j] = flag;
             if (matrix[i][j] == '0' || (matrix[i][j] > level + '0')) {
                 matrix[i][j] = (char)(level + '0');
             }
-            getShortestPathBFS(matrix, flag, visited, i + 1, j, level + 1);
-            getShortestPathBFS(matrix, flag, visited, i, j + 1, level + 1);
-            getShortestPathBFS(matrix, flag, visited, i - 1, j, level + 1);
-            getShortestPathBFS(matrix, flag, visited, i, j - 1, level + 1);
+            getShortestPathDFS(matrix, flag, visited, i + 1, j, level + 1);
+            getShortestPathDFS(matrix, flag, visited, i, j + 1, level + 1);
+            getShortestPathDFS(matrix, flag, visited, i - 1, j, level + 1);
+            getShortestPathDFS(matrix, flag, visited, i, j - 1, level + 1);
         }
     }
 
     public boolean isBanlancedWeightedTree(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        return (weightHelper(root.left) == weightHelper(root.right)) && isBanlancedWeightedTree(root.left) && isBanlancedWeightedTree(root.right);
+        return getDepth(root) != -1;
     }
-    public int weightHelper(TreeNode node) {
-        if (node == null) {
+    private int getDepth(TreeNode root) {
+        if (root == null) {
             return 0;
         }
-        return node.val + weightHelper(node.left) + weightHelper(node.right);
+        int left = getDepth(root.left);
+        int right = getDepth(root.right);
+        if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
+            return -1;
+        } else {
+            return Math.max(left, right) + 1;
+        }
     }
 }

@@ -106,4 +106,9 @@ public class JunitTest {
         root.right.right = new TreeNode(15);
         print(tg.isBanlancedWeightedTree(root));
     }
+
+    @Test
+    public void test8() {
+        int[][] matrix = {{1, 4, 5}, {2, 7, 6}, {3, 8, 9}};
+    }
 }
