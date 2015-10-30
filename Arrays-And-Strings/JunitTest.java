@@ -179,6 +179,7 @@ public class JunitTest {
         printArray(res2);
     }
 
+    @Ignore
     @Test
     public void test14() {
         int[] t1 = {1, 4, 3, 5, 7, -1, 2};
@@ -188,4 +189,15 @@ public class JunitTest {
         int res2 = as.getDivider(t2);
         System.out.println(res2);
     }
+
+    @Test
+    public void test15() {
+        int[][] matrix1 = {{1,1,0}, {1,1,0}, {1,1,0}};
+        testify(6, as.largestRectangleArea(matrix1));
+        int[][] matrix2 = {{1,0,0}, {1,1,0}, {1,0,0}};
+        testify(3, as.largestRectangleArea(matrix2));
+        int[][] matrix3 = {{1,1,0}};
+        testify(2, as.largestRectangleArea(matrix3));
+    }
+
 }

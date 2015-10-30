@@ -344,4 +344,50 @@ public class ArraysAndStrings {
 		}
 		return -1;
 	}
+
+	class Size {
+		int hei;
+		int wid;
+	}
+	public int largestRectangleArea(int[][] matrix) {
+		if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;
+		int m = matrix.length;
+		int n = matrix[0].length;
+		int res = 0;
+		Size[][] area = new Size[m][n];
+		area[0][0] = new Size();
+		area[0][0].hei = matrix[0][0];
+		area[0][0].wid = matrix[0][0];
+		res = Math.max(res, matrix[0][0]);
+		for (int i = 1; i < m; i++) {
+			Size size = new Size();
+			if (matrix[i][0] == 1) {
+				size.wid = 1;
+				size.hei = area[i - 1][0].hei + 1;
+			}
+			area[i][0] = size;
+			res = Math.max(res, size.wid * size.hei);
+		}
+		for (int j = 1; j < n; j++) {
+			Size size = new Size();
+			if (matrix[0][j] == 1) {
+				size.wid = area[0][j - 1].wid + 1;
+				size.hei = 1;
+			}
+			area[0][j] = size;
+			res = Math.max(res, size.wid * size.hei);
+		}
+		for (int i = 1; i < m; i++) {
+			for (int j = 1; j < n; j++) {
+				Size size = new Size();
+				if (matrix[i][j] == 1) {
+					size.hei = Math.min(Math.min(area[i - 1][j].hei, area[i - 1][j - 1].hei), area[i][j - 1].hei) + 1;
+					size.wid = Math.min(Math.min(area[i][j - 1].wid, area[i - 1][j - 1].wid), area[i - 1][j].wid) + 1;
+				}
+				area[i][j] = size;
+				res = Math.max(res, size.wid * size.hei);
+			}
+		}
+		return res;
+	}
 }
