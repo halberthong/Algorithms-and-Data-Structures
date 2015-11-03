@@ -192,14 +192,10 @@ public class JunitTest {
 
     @Test
     public void test15() {
-        int[][] matrix1 = {{1,1,0}, {1,1,0}, {1,1,0}};
-        testify(6, as.largestRectangleArea(matrix1));
-        int[][] matrix2 = {{1,0,0}, {1,1,0}, {1,0,0}};
-        testify(3, as.largestRectangleArea(matrix2));
-        int[][] matrix3 = {{1,1,0}};
-        testify(2, as.largestRectangleArea(matrix3));
-        int[][] matrix4 = {{1,1,0}, {0,1,1}};
-        testify(2, as.largestRectangleArea(matrix4));
+        char[][] matrix1 = {{'1','1','0'}, {'1','1','0'}, {'1','1','0'}};
+        testify(6, as.maximalRectangle(matrix1));
+        char[][] matrix2 = {{'1','1','0'}};
+        testify(2, as.maximalRectangle(matrix2));
     }
 
 }
