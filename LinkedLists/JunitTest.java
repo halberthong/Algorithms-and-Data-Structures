@@ -193,11 +193,29 @@ public class JunitTest {
         testify(res, l2);
     }
 
+    @Ignore
     @Test
     public void test12() {
         ListNode l1 = new ListNode(9);
         l1.add(10); l1.add(12); l1.add(13); l1.add(14); l1.add(20); l1.add(21);
         l1.add(22); l1.add(23); l1.add(24); l1.add(25); l1.add(26); l1.add(27);
         ll.printInterval(l1);
+    }
+
+    @Test
+    public void test13() {
+        List<Integer> l1 = new LinkedList<Integer>();
+        l1.add(1); l1.add(2); l1.add(3); l1.add(4);
+        List<Integer> l2 = new LinkedList<Integer>();
+        l2.add(5); l2.add(6); l2.add(7);
+        List<Integer> l3 = new LinkedList<Integer>();
+        l3.add(8); l3.add(9); l3.add(10); l3.add(11);
+        List<Iterator<Integer>> lists = new LinkedList();
+        lists.add(l1.iterator()); lists.add(l2.iterator()); lists.add(l3.iterator());
+        ZigZagIterator zzi = new ZigZagIterator(lists);
+        System.out.println();
+        while (zzi.hasNext()) {
+            System.out.print(zzi.next() + " ");
+        }
     }
 }
