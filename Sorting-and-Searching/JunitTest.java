@@ -13,6 +13,7 @@ public class JunitTest {
         ss = new SortingAndSearching();
     }
 
+    @Ignore
     @Test
     public void test1() {
         int[] A = {1, 3, 5, 0, 0};
@@ -24,5 +25,12 @@ public class JunitTest {
         } catch(AssertionError e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void test2() {
+        String s = "bassaabb";
+        CharacterFreqRank cfr = new CharacterFreqRank(s);
+        cfr.print();
     }
 }
