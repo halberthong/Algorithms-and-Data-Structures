@@ -38,9 +38,19 @@ public class JunitTest {
         testify(false, mp.isPrime(49));
     }
 
+    @Ignore
     @Test
     public void test3() {
         testify(false, mp.isSuperPrime(2000));
         testify(true, mp.isSuperPrime(2333));
+    }
+
+    @Test
+    public void test4() {
+        mp.printPrimeFactors(9);
+        mp.printPrimeFactors(24);
+        mp.printPrimeFactors(332);
+        mp.printPrimeFactors(2345);
+        mp.printPrimeFactors(75322);
     }
 }

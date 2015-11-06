@@ -41,4 +41,16 @@ public class MathProblems {
         }
         return false;
     }
+
+    public void printPrimeFactors(int n) {
+        int factor = 2;
+        for (int i = 2; i * i <= n; i++) {
+            while (n % i == 0) {
+                System.out.print(i + " ");
+                n /= i;
+            }
+        }
+        if (n > 1) System.out.println(n);
+        else System.out.println();
+    }
 }
