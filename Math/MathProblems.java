@@ -31,4 +31,14 @@ public class MathProblems {
         }
         return true;
     }
+
+    public boolean isSuperPrime(int n) {
+        if (n < 10) {
+            return isPrime(n);
+        }
+        if (isPrime(n)) {
+            return isSuperPrime(n / 10);
+        }
+        return false;
+    }
 }

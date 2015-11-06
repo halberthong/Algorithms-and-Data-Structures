@@ -31,9 +31,16 @@ public class JunitTest {
         mp.printPrimeNumbers(1000);
     }
 
+    @Ignore
     @Test
     public void test2() {
         testify(true, mp.isPrime(233));
         testify(false, mp.isPrime(49));
+    }
+
+    @Test
+    public void test3() {
+        testify(false, mp.isSuperPrime(2000));
+        testify(true, mp.isSuperPrime(2333));
     }
 }
