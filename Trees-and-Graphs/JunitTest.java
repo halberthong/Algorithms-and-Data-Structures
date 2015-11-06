@@ -108,6 +108,7 @@ public class JunitTest {
         print(tg.isBanlancedWeightedTree(root));
     }
 
+    @Ignore
     @Test
     public void test8() {
         int[][] matrix1 = {{1, 4, 5}, {2, 7, 6}, {3, 8, 9}};
