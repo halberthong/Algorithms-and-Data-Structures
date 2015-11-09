@@ -118,4 +118,23 @@ public class JunitTest {
         int[][] matrix3 = {{1,1,1}, {1,1,1}};
         testify(1, tg.longestContinuousSequence(matrix3));
     }
+
+    @Test
+    public void test9() {
+        AvlTree theTree = new AvlTree();
+        theTree.insert(50);
+        theTree.insert(25);
+        theTree.insert(75);
+        theTree.insert(12);
+        theTree.insert(37);
+        theTree.insert(43);
+        theTree.insert(30);
+        theTree.insert(33);
+        theTree.insert(87);
+        theTree.insert(93);
+        theTree.insert(97);
+        testify(true, theTree.find(96, theTree.getRoot()) == null);
+        testify(97, theTree.find(97, theTree.getRoot()).val);
+        testify(3, theTree.getRoot().height);
+    }
 }
