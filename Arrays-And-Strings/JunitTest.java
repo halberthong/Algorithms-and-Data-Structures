@@ -190,6 +190,7 @@ public class JunitTest {
         System.out.println(res2);
     }
 
+    @Ignore
     @Test
     public void test15() {
         char[][] matrix1 = {{'1','1','0'}, {'1','1','0'}, {'1','1','0'}};
@@ -198,4 +199,9 @@ public class JunitTest {
         testify(2, as.maximalRectangle(matrix2));
     }
 
+    @Test
+    public void test16() {
+        String[] strs = new String[]{"David", "David", "Mike", "Ross", "Gin", "Micky", "Mike", "Mike"};
+        as.printTopKStrings(strs, 2);
+    }
 }

@@ -385,4 +385,44 @@ public class ArraysAndStrings {
 		}
 		return max;
 	}
+
+	class Pair {
+		int count;
+		String name;
+		public Pair(int c, String i) {
+			count = c;
+			name = i;
+		}
+	}
+	public void printTopKStrings(String[] strs, int k) {
+		Map<String, Integer> map = new HashMap<>();
+		for (String str : strs) {
+			if (!map.containsKey(str)) {
+				map.put(str, 1);
+			} else {
+				map.put(str, map.get(str) + 1);
+			}
+		}
+		PriorityQueue<Pair> queue = new PriorityQueue<Pair>(1, new Comparator<Pair>(){
+			@Override
+			public int compare(Pair p1, Pair p2) {
+				return p1.count - p2.count;
+			}
+		});
+		for (String str : map.keySet()) {
+			Pair newPair = new Pair(map.get(str), str);
+			if (queue.size() < k) {
+				queue.offer(newPair);
+			} else if (queue.size() == k && queue.peek().count < newPair.count) {
+				queue.poll();
+				queue.offer(newPair);
+			}
+		}
+		System.out.println();
+		while (!queue.isEmpty()) {
+			Pair cur = queue.poll();
+			System.out.println(cur.name + " " + cur.count);
+		}
+	}
+
 }
