@@ -50,4 +50,31 @@ public class SortingAndSearching {
             return findKth(A, A_start, B, B_start + k / 2, k - k / 2);
         }
     }
+    public Point[] findKPoints(Point[] list, int k) {
+        if (list == null || list.length == 0 || k > list.length) {
+            return null;
+        }
+        PriorityQueue<Point> queue = new PriorityQueue<Point>(k, new Comparator<Point>() {
+            @Override
+            public int compare(Point p1, Point p2) {
+                double res = ((double)p1.x * (double)p1.x + (double)p1.y * (double)p1.y) -
+                ((double)p2.x * (double)p2.x + (double)p2.y * (double)p2.y);
+                if (res < 0) {
+                    return -1;
+                } else if (res > 0) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+        for (Point cur : list) {
+            queue.offer(cur);
+        }
+        Point[] res = new Point[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = queue.poll();
+        }
+        return res;
+    }
 }
