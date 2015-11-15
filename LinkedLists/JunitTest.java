@@ -202,6 +202,7 @@ public class JunitTest {
         ll.printInterval(l1);
     }
 
+    @Ignore
     @Test
     public void test13() {
         List<Integer> l1 = new LinkedList<Integer>();
@@ -216,6 +217,21 @@ public class JunitTest {
         System.out.println();
         while (zzi.hasNext()) {
             System.out.print(zzi.next() + " ");
+        }
+    }
+
+    @Test
+    public void test14() {
+        ListNode l = new ListNode(1);
+        l.add(2);
+        l.add(3);
+        l.add(4);
+        l.add(5);
+        l.add(6);
+        ListNode newl = ll.reverseSecondHalf(l);
+        while (newl != null) {
+            System.out.print(newl.val + " ");
+            newl = newl.next;
         }
     }
 }
